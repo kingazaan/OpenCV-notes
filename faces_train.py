@@ -60,12 +60,13 @@ print('Training done ---------------------------')
 print(f'Length of the features = {len(features)}')
 print(f'Length of the labels = {len(labels)}')
 
-# Convert both featrues and lables to numpy arrays
-features = np.array(features)
+# Convert both featrues and labels to numpy arrays
+features = np.array(features, dtype='object')
 labels = np.array(labels)
 
 # Train Recognizer on features and labels list
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
+face_recognizer.train(features, labels)
 
 # save the trained model as a yml
 face_recognizer.save('face_trained.yml')
